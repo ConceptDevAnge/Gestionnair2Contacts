@@ -1,33 +1,19 @@
 package mvc.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+
+import mvc.model.FenetreDEntreeModel;
 
 public class FenetreDEntree {
 
 	private JFrame frmGestionDesContacts;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenetreDEntree window = new FenetreDEntree();
-					window.frmGestionDesContacts.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private FenetreDEntreeModel model;
 
 	/**
 	 * Create the application.
 	 */
-	public FenetreDEntree() {
+	public FenetreDEntree(FenetreDEntreeModel model) {
+		this.model = model;
 		initialize();
 	}
 
@@ -36,9 +22,13 @@ public class FenetreDEntree {
 	 */
 	private void initialize() {
 		frmGestionDesContacts = new JFrame();
-		frmGestionDesContacts.setTitle("Gestion des contacts");
+		frmGestionDesContacts.setTitle(model.getTitre());
 		frmGestionDesContacts.setBounds(100, 100, 450, 300);
 		frmGestionDesContacts.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void setVisible() {
+		this.frmGestionDesContacts.setVisible(true);
 	}
 
 }
